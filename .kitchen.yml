@@ -1,20 +1,30 @@
 ---
+
 driver:
   name: vagrant
 
 provisioner:
-  name: chef_zero
-  # You may wish to disable always updating cookbooks in CI or other testing environments.
-  # For example:
-  #   always_update_cookbooks: <%= !ENV['CI'] %>
-  always_update_cookbooks: true
+  name: chef_solo
+<% if ENV['CHEF_VERSION'] %>
+  require_chef_omnibus: <%= ENV['CHEF_VERSION'] %>
+<% end %>
+  deprecations_as_errors: true
 
 verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-16.04
-  - name: centos-7
+- name: centos-6
+- name: centos-7
+- name: oracle-6
+- name: oracle-7
+- name: fedora-25
+- name: fedora-26
+- name: rhel-7
+
+verifier:
+  name: inspec
+  sudo: true
 
 suites:
   - name: default
@@ -22,5 +32,4 @@ suites:
       - recipe[cis_rhel::default]
     verifier:
       inspec_tests:
-        - test/smoke/default
-    attributes:
+        - https://github.com/dev-sec/cis-dil-benchmark

@@ -1,6 +1,6 @@
 name 'cis_rhel'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Chef Software, Inc.'
+maintainer_email 'cookbooks@chef.io'
 license 'Apache-2.0'
 description 'Installs/Configures cis_rhel'
 long_description 'Installs/Configures cis_rhel'
