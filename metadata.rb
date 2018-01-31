@@ -11,3 +11,5 @@ supports 'redhat'
 supports 'centos'
 
 depends 'aide'
+depends 'os-hardening'
+depends 'sudo'
