@@ -1,8 +1,8 @@
 #
 # Cookbook:: cis_rhel
-# Spec:: default
+# Recipe:: avahi
 #
-# Copyright:: 2018, The Authors
+# Copyright:: 2018, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,20 +15,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# 2.2.3 Ensure Avahi Server is not enabled
 
-require 'spec_helper'
-
-describe 'cis_rhel::default' do
-  context 'When all attributes are default, on an Ubuntu 16.04' do
-    let(:chef_run) do
-      # for a complete list of available platforms and versions see:
-      # https://github.com/customink/fauxhai/blob/master/PLATFORMS.md
-      runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
-      runner.converge(described_recipe)
-    end
-
-    it 'converges successfully' do
-      expect { chef_run }.to_not raise_error
-    end
-  end
+service 'avahi-daemon' do
+  action [:disable, :stop]
 end
