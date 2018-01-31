@@ -21,9 +21,14 @@ It does not:
 
 ### Cookbooks
 
-- line
+* 'aide'
+* 'os-hardening'
+* 'sudo'
+* 'firewall'
+* 'ssh-hardening'
 
 ## Usage
+
 
 
 ## Maintainers

@@ -32,4 +32,4 @@ suites:
       - recipe[cis_rhel::default]
     verifier:
       inspec_tests:
-        - https://github.com/dev-sec/cis-dil-benchmark
+        - ../compliance-profiles/src/inspec/supported/cis-rhel7-level1-server-v2.1.1

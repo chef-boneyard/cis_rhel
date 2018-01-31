@@ -1,6 +1,6 @@
 #
 # Cookbook:: cis_rhel
-# Recipe:: default
+# Recipe:: ssh
 #
 # Copyright:: 2018, Chef Software, Inc.
 #
@@ -16,10 +16,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'cis_rhel::aide'
-include_recipe 'cis_rhel::core_dumps'
-include_recipe 'cis_rhel::cron'
-# include_recipe 'cis_rhel::firewalld'
-include_recipe 'cis_rhel::login_banners'
-include_recipe 'cis_rhel::partitions'
-include_recipe 'cis_rhel::ssh'
+include_recipe 'ssh-hardening'
