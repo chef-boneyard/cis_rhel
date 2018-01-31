@@ -18,4 +18,4 @@
 # 1.3.1_Ensure_AIDE_is_installed: Ensure AIDE is installed
 # xccdf_org.cisecurity.benchmarks_rule_1.3.2_Ensure_filesystem_integrity_is_regularly_checked:
 
-include_recipe 'aide::default'
+include_recipe 'aide'

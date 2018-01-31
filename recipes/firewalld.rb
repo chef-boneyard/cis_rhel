@@ -1,6 +1,6 @@
 #
 # Cookbook:: cis_rhel
-# Recipe:: default
+# Recipe:: firewalld
 #
 # Copyright:: 2018, Chef Software, Inc.
 #
@@ -15,7 +15,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# Fix for "xccdf_org.cisecurity.benchmarks_rule_3.6.1_Ensure_iptables_is_installed"
 
-include_recipe 'cis_rhel::aide'
-include_recipe 'cis_rhel::core_dumps'
-include_recipe 'cis_rhel::firewalld'
+include_recipe 'firewall'
