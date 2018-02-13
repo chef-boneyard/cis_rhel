@@ -2,12 +2,12 @@
 
 This cookbook provides security-related recipes to apply CIS Benchmarks to RHEL based systems.
 
-It configures:
-
 It does not:
 
 * Install or update system packages.
 * Install security patches.
+
+It prefers community cookbook driven solutions over trying to implement everything in this cookbook, using resources or attributes as necessary to customize and harden based on CIS benchmarks.
 
 ## Requirements
 
@@ -26,9 +26,13 @@ It does not:
 * 'sudo'
 * 'firewall'
 * 'ssh-hardening'
+* 'cron'
+* 'sysctl'
+* 'rsyslog'
 
 ## Usage
 
+Test out hardening a system by using the default recipe. In your environment, you most likely will customize to your environment. For example, the firewall configuration should be specific to the configuration you need in your environment.
 
 
 ## Maintainers

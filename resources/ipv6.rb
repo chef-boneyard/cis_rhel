@@ -18,6 +18,7 @@
 #
 
 action :harden do
+  include_recipe 'sysctl'
   # Ensure IPv6 is enabled
   sysctl_param 'net.ipv6.conf.all.disable_ipv6' do
     value 0
@@ -42,6 +43,7 @@ action :harden do
 end
 
 action :disable do
+  include_recipe 'sysctl'
   # Ensure IPv6 is disabled
   sysctl_param 'net.ipv6.conf.all.disable_ipv6' do
     value 1
