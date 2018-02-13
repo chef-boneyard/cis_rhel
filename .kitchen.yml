@@ -15,12 +15,23 @@ verifier:
 
 platforms:
 - name: centos-6
+  verifier:
+    inspec_tests:
+      - ../compliance-profiles/src/inspec/supported/cis-centos6-level1-v1.1.0-1
 - name: centos-7
-- name: oracle-6
+  verifier:
+    inspec_tests:
+      - ../compliance-profiles/src/inspec/supported/cis-centos7-level1-v1.1.0
 - name: oracle-7
+  verifier:
+    inspec_tests:
+      - ../compliance-profiles/src/inspec/supported/cis-oraclelinux7-level1-v1.1.0
 - name: fedora-25
 - name: fedora-26
 - name: rhel-7
+  verifier:
+    inspec_tests:
+      - ../compliance-profiles/src/inspec/supported/cis-rhel7-level1-server-v2.1.1
 
 verifier:
   name: inspec
@@ -30,6 +41,24 @@ suites:
   - name: default
     run_list:
       - recipe[cis_rhel::default]
-    verifier:
-      inspec_tests:
-        - ../compliance-profiles/src/inspec/supported/cis-rhel7-level1-server-v2.1.1
+    attributes:
+      ssh-hardening:
+        ssh:
+          server:
+            cipher: 'aes128-ctr,aes192-ctr,aes256-ctr'
+      firewall:
+        allow_ssh: true
+      rsyslog:
+        config_files:
+          mode: '0640'
+        server_ip: 10.0.0.50
+        custom_remote:
+            - server: 10.0.0.45
+              logs: auth.*,mail.*
+              port: 555
+              protocol: udp
+            - server: 10.1.1.33
+              logs: authpriv.*,cron.*,daemon.*
+              port: 654
+              protocol: tcp
+              remote_template: RSYSLOG_SyslogProtocol23Format

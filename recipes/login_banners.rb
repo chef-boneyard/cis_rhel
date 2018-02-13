@@ -32,6 +32,5 @@
     owner 'root'
     group 'root'
     action :create
-    only_if { ::File.empty?(loginfile) }
   end
 end
